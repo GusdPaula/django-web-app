@@ -1,0 +1,44 @@
+{% extends "boost/base.html" %}
+
+{% block content %}
+<!-- Main Content Area -->
+<div class="content" id="content">
+    <h2>Add Income Category</h2>
+    <form method='POST'>
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="expenseName">Income Category Name:</label>
+        {{form.name}}
+      </div>
+      <button type="submit" class="btn btn-primary">Add Income Category</button>
+    </form>
+    <br>
+    <h2>Income Categories</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Date</th>
+          <th scope="col">Income Category Name</th>
+          <th scope="col">Remove</th>
+        </tr>
+      </thead>
+      <tbody id="expenseTable">
+        {% for income_category in income_categories %}
+
+          <tr>
+            <td>{{income_category.id}}</td>
+            <td>{{income_category.date_created}}</td>
+            <td>{{income_category.name}}</td>
+            <td><a href="{% url "boost:delete_income_cat" income_category.id %}" class="btn btn-sm btn-danger">X</a></td>
+          </tr>
+
+        {% endfor %}
+
+      </tbody>
+    </table>
+  </div>
+  
+  <!-- Bootstrap JS (optional, for Bootstrap components) -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+{% endblock content %}

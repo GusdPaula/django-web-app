@@ -1,0 +1,89 @@
+{% extends "boost/base.html" %}
+
+{% load static %}
+
+{% block content %}
+    <!-- Main Content Area -->
+<div class="content">
+    
+  <h2>Hello {{ request.user }}</h2>
+    
+</div>
+<div class="container">
+  <div class="container overflow-hidden">
+    <div class="row gx-5">
+      <div class="col">
+        <div class="card text-white bg-info mb-3" style="max-width: 18rem;">
+          <div class="card-chart">
+            <a id="showExpChart">
+            <div class="card-header text-center"><h2 class="card-title">Expenses</h2></div>
+            <div class="card-body">
+              <h3 class="card-text text-center">{{expenses_total}}</h3>
+            </div>
+            </a>
+          </div>
+          
+        </div>
+        
+       </div>
+      <div class="col">
+        <div class="card text-white bg-info mb-3" style="max-width: 18rem;">
+          <div class="card-chart">
+            <a id="showIncChart">
+          <div class="card-header text-center"><h2 class="card-title">Incomes</h2></div>
+          <div class="card-body">
+            <h3 class="card-text text-center">{{incomes_total}}</h3>
+          </div>
+        </a>
+      </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card text-white bg-info mb-3" style="max-width: 18rem;">
+          <div class="card-chart">
+            <a id="showNetChart">
+              <div class="card-header text-center"><h2 class="card-title">Net</h2></div>
+              <div class="card-body">
+                <h3 class="card-text text-center">{{net}}</h3>
+              </div>
+            </a>
+        </div>
+      </div>
+        
+      </div>
+      <div class="col">
+        <div class="card text-white bg-info mb-3" style="max-width: 18rem;">
+          <div class="card-chart">
+            <a id="showSaveChart">
+              <div class="card-header text-center"><h2 class="card-title">Savings</h2></div>
+              <div class="card-body">
+                <h3 class="card-text text-center">{{savings_total}}</h3>
+              </div>
+            </a>
+        </div>
+      </div>
+      
+    </div>
+    <div><br></div>
+    <h3 id="chart-instruc" class="text-center" style="margin-top: 10rem;">Click on the cards above to show a chart!</h3>
+    <div style="height: 30rem;">
+      <canvas id="myChart"></canvas>
+    </div>
+    
+    
+  </div>
+  
+</div>
+
+<div class="row">
+  <div class="col-sm-12" url-endpoin='{% url "boost:api_expenses_data" %}'>
+    
+  </div>
+</div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{% static 'boost/js/home.js' %}"></script>
+
+{% endblock content %}

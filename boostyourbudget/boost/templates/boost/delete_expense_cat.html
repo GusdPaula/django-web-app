@@ -1,0 +1,20 @@
+{% extends "boost/base.html" %}
+
+{% block content %}
+<!-- Main Content Area -->
+
+<div class="content" id="content">
+    <h2>Delete Expense Category</h2>
+    <p>Are you sure you wanna delete?</p>
+
+    <p>Name: {{expense_category.name}}</p>
+    <p>Date: {{expense_category.date_created}}</p>
+    <form method='POST' action="{% url "boost:delete_expense_cat" expense_category.id %}">
+      {% csrf_token %}
+      <a class="btn btn-sm btn-info" href="{% url "boost:expense_categories" %}">Cancel</a>
+      <input class="btn btn-sm btn-danger" value="Confirm" type="submit" name="Confirm">
+    </form>
+</div>
+  <!-- Bootstrap JS (optional, for Bootstrap components) -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+{% endblock content %}

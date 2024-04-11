@@ -1,0 +1,44 @@
+{% extends "boost/base.html" %}
+
+{% block content %}
+<!-- Main Content Area -->
+<div class="content" id="content">
+    <h2>Add Expense Category</h2>
+    <form id="expenseForm" method='POST'>
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="expenseName">Expense Category Name:</label>
+        {{form.name}}
+      </div>
+      <button type="submit" class="btn btn-primary">Add Expense Category</button>
+    </form>
+    <br>
+    <h2>Expense Categories</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Date</th>
+          <th scope="col">Expense Category Name</th>
+          <th scope="col">Remove</th>
+        </tr>
+      </thead>
+      <tbody id="expenseTable">
+        {% for expense_category in expense_categories %}
+
+          <tr>
+            <td>{{expense_category.id}}</td>
+            <td>{{expense_category.date_created}}</td>
+            <td>{{expense_category.name}}</td>
+            <td><a href="{% url "boost:delete_expense_cat" expense_category.id %}" class="btn btn-sm btn-danger">X</a></td>
+          </tr>
+
+        {% endfor %}
+
+      </tbody>
+    </table>
+  </div>
+  
+  <!-- Bootstrap JS (optional, for Bootstrap components) -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+{% endblock content %}

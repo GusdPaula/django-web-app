@@ -1,0 +1,60 @@
+{% extends "boost/base.html" %}
+
+{% block content %}
+<!-- Main Content Area -->
+<div class="content" id="content">
+    <h2>Add Income</h2>
+    <form id="expenseForm" method='POST'>
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="expenseName">Income Name:</label>
+        {{form.name}}
+      </div>
+      <div class="form-group">
+        <label for="expenseName">Income Category:</label>
+        {{form.categories}}
+        <a href="{% url "boost:income_categories" %}">Manage income categories</a>
+      </div>
+      <div class="form-group">
+        <label for="expenseAmount">Income Amount:</label>
+        {{form.amount}}
+      </div>
+      <button type="submit" class="btn btn-primary">Add Incomes</button>
+    </form>
+    <br>
+    <h2>Incomes</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Date</th>
+          <th scope="col">Income Name</th>
+          <th scope="col">Category</th>
+          <th scope="col">Amount</th>
+          <th scope="col">Update</th>
+          <th scope="col">Remove</th>
+        </tr>
+      </thead>
+      <tbody id="expenseTable">
+        {% for income in incomes %}
+
+        {% if income.user == request.user %}
+          <tr>
+            <td>{{income.id}}</td>
+            <td>{{income.date_created}}</td>
+            <td>{{income.name}}</td>
+            <td>{{income.categories}}</td>
+            <td>{{income.amount}}</td>
+            <td><a href="{% url "boost:update_income" income.id %}" class="btn btn-sm btn-info">O</a></td>
+            <td><a href="{% url "boost:delete_income" income.id %}" class="btn btn-sm btn-danger">X</a></td>
+          </tr>
+        {% endif %}
+        {% endfor %}
+
+      </tbody>
+    </table>
+  </div>
+  
+  <!-- Bootstrap JS (optional, for Bootstrap components) -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+{% endblock content %}

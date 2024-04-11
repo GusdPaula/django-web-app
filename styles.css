@@ -1,0 +1,133 @@
+body{
+	margin:0;
+	padding:0;
+	background:#fff;
+	font-family: 'Raleway',sans-serif;
+	color: #fff;
+}
+.banner{
+	height: 100vh;
+	width: 100%;
+	background:url('overlay.png'),url('finance.jpeg');
+	background-position: top;
+	background-size:cover;
+	/*background-attachment: fixed;*/
+	background-repeat: no-repeat;
+}
+.banner .navbar{
+	margin-top:4%;
+}
+.banner .navbar-brand{
+	color: #ffffff;
+	font-size:1.8em;
+	font-weight: 700;
+	margin-left: 10%;
+}
+.banner .nav{
+	margin-right:10%; 
+}
+.banner .nav li a{
+	color:#aaa;
+	font-size: 1.2em;
+}
+.banner .info{
+	margin-top:15%;
+	transform: translateY(-15%);
+}
+.banner .info h1{
+	font-size: 2.5em;
+	font-weight: 700;
+	color: #fff;
+	letter-spacing: 2px;
+}
+.banner .info p{
+	font-size: 2em;
+	font-weight: 500;
+	color: #aaa;
+	letter-spacing: 2px;
+}
+.banner .info a{
+	margin-left:50%;
+	transform: translateX(-50%);
+	color: #fff;
+	background: #e91d43;
+	padding:10px 20px; 
+	font-size: 2em;
+	font-weight: 600;
+}
+.banner .info a:hover{
+	background: #e91e63;
+}
+
+.body-login {
+  margin: 0px;
+  padding: 0px;
+
+  background-image: url();
+  background:url('overlay.png'),url('finance.jpeg');
+	background-position: top;
+	background-size:cover;
+	/*background-attachment: fixed;*/
+	background-repeat: no-repeat;
+  height: 100%;
+  overflow: hidden;
+  
+}
+
+.login-form {
+  background-color: #fff;
+  width: 30%;
+  height: auto;
+  margin: 7% auto;
+  padding: 25px 10px;
+  color: black;
+}
+
+@media screen and (max-width:1500px) {
+  .login-form {
+    
+    width: 90%;
+    margin: 30% auto;
+  }
+}
+
+/* Set the size of the left menu */
+.sidebar {
+  height: 100%;
+  width: 250px;
+  position: fixed;
+  top: 0;
+  left: -250px; /* Initially hidden */
+  background-color: #343a40; /* Bootstrap dark gray */
+  padding-top: 20px;
+  transition: left 0.3s ease;
+}
+
+/* Set the size of the left menu */
+.sidebar {
+  height: 100%;
+  width: 250px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #343a40; /* Bootstrap dark gray */
+  padding-top: 20px;
+}
+/* Style links inside the left menu */
+.sidebar a {
+  padding: 10px 15px;
+  text-decoration: none;
+  font-size: 20px;
+  color: white;
+  display: block;
+}
+/* Change color on hover */
+.sidebar a:hover {
+  background-color: #adb5bd; /* Bootstrap light gray */
+}
+/* Main content area */
+.content {
+  margin-left: 250px; /* Same as the width of the sidebar */
+  padding: 20px;
+  color: #343a40;
+}

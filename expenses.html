@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Left Menu Template</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" type="text/css" href="styles.css" />
+</head>
+<body>
+
+<!-- Left Menu (Sidebar) -->
+<div class="sidebar">
+  <a href="#">Home</a>
+  <a href="expenses.html">Expenses</a>
+  <a href="#">About</a>
+  <a href="#">Services</a>
+  <a href="#">Contact</a>
+</div>
+
+<!-- Main Content Area -->
+<div class="content" id="content">
+  <h2>Add Expense</h2>
+  <form id="expenseForm">
+    <div class="form-group">
+      <label for="expenseName">Expense Name:</label>
+      <input type="text" class="form-control" id="expenseName" required>
+    </div>
+    <div class="form-group">
+      <label for="expenseName">Expense Category:</label>
+      <input type="text" class="form-control" id="expenseName" required>
+    </div>
+    <div class="form-group">
+      <label for="expenseAmount">Expense Amount:</label>
+      <input type="number" class="form-control" id="expenseAmount" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Add Expense</button>
+  </form>
+  <br>
+  <h2>Expenses</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Expense Name</th>
+        <th scope="col">Category</th>
+        <th scope="col">Amount</th>
+      </tr>
+    </thead>
+    <tbody id="expenseTable">
+      <!-- Expenses will be dynamically added here -->
+    </tbody>
+  </table>
+</div>>
+
+<!-- Bootstrap JS (optional, for Bootstrap components) -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+// Function to add an expense
+  document.getElementById('expenseForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    var expenseName = document.getElementById('expenseName').value;
+    var expenseAmount = document.getElementById('expenseAmount').value;
+    addExpense(expenseName, expenseAmount);
+    document.getElementById('expenseForm').reset();
+  });
+
+  // Function to add an expense to the table
+  function addExpense(name, amount) {
+    var table = document.getElementById('expenseTable');
+    var newRow = table.insertRow(-1);
+    var indexCell = newRow.insertCell(0);
+    var nameCell = newRow.insertCell(1);
+    var amountCell = newRow.insertCell(2);
+    indexCell.textContent = table.rows.length - 1;
+    nameCell.textContent = name;
+    amountCell.textContent = amount;
+  }
+</script>
+</body>
+</html>

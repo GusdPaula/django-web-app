@@ -64,7 +64,45 @@
       </div>
       
     </div>
-    <div><br></div>
+    <div id='app'>
+      <div id='dateFilter'>
+        <h4>Filter by month, year or category</h4>
+        <table class='optionsTable'>
+          <tr class='optionsRow'>
+            <td>
+              <select id='month' name="month">
+                <option value='' selected='selected'>Month</option>
+                <option value='1'>January</option>
+                <option value='2'>February</option>
+                <option value='3'>March</option>
+                <option value='4'>April</option>
+                <option value='5'>May</option>
+                <option value='6'>June</option>
+                <option value='7'>July</option>
+                <option value='8'>August</option>
+                <option value='9'>September</option>
+                <option value='10'>October</option>
+                <option value='11'>November</option>
+                <option value='12'>December</option>      
+              </select>
+            </td>
+            
+            <td>
+              <input id='year' name="year_to_filter" placeholder='{{year}}' type='number' min='1900' max='2020'/>
+            </td>
+
+            <td>
+              <select id='category' name="category">
+                <option value='' selected='selected'>Category</option>
+
+              </select>
+            </td>
+
+          </tr>
+        </table>
+      </div>
+      
+    </div>
     <h3 id="chart-instruc" class="text-center" style="margin-top: 10rem;">Click on the cards above to show a chart!</h3>
     <div style="height: 30rem;">
       <canvas id="myChart"></canvas>

@@ -1,0 +1,60 @@
+{% extends "boost/base.html" %}
+{% load static %}
+{% block content %}
+<!-- Main Content Area -->
+<div class="content" id="content">
+    <h2>Add {{fin_type_plural}}</h2>
+    <form method='POST'>
+      {% csrf_token %}
+      <div class="form-group">
+        <label>{{fin_type}} Name:</label>
+        {{form.name}}
+      </div>
+      <div class="form-group">
+        <label>{{fin_type}} Category:</label>
+        {{form.categories}}
+        <a href="{% url "boost:fin-categories" fintype=fin_type_plural %}">Manage {{fin_type}} categories</a>
+      </div>
+      <div class="form-group">
+        <label>{{fin_type}} Amount:</label>
+        {{form.amount}}
+      </div>
+      <button type="submit" class="btn btn-primary">Add {{fin_type}}</button>
+    </form>
+    <br>
+    <h2>{{fin_type_plural}}</h2>
+    <table id='model' class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Date</th>
+          <th scope="col">{{fin_type}} Name</th>
+          <th scope="col">Category</th>
+          <th scope="col">Amount</th>
+          <th scope="col">Update</th>
+          <th scope="col">Remove</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for data in database %}
+
+        {% if data.user == request.user %}
+          <tr>
+            <td>{{data.id}}</td>
+            <td>{{data.date_created}}</td>
+            <td>{{data.name}}</td>
+            <td>{{data.categories}}</td>
+            <td>{{data.amount}}</td>
+            <td><a href="{% url "boost:fin-data-update" fintype=fin_type_plural pk=data.id %}" class="btn btn-sm btn-info">O</a></td>
+            <td><a href="{% url "boost:fin-data-delete" fintype=fin_type_plural pk=data.id %}" class="btn btn-sm btn-danger">X</a></td>
+          </tr>
+        {% endif %}
+        {% endfor %}
+
+      </tbody>
+    </table>
+  </div>
+  
+  <!-- Bootstrap JS (optional, for Bootstrap components) -->
+  <script src="{% static 'boost/js/table_model.js' %}"></script>
+{% endblock content %}

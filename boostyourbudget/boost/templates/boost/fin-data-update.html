@@ -1,0 +1,30 @@
+{% extends "boost/base.html" %}
+
+{% block content %}
+<!-- Main Content Area -->
+<div class="content" id="content">
+    <h2>Update {{fin_type}}</h2>
+    <form method='POST'>
+      {% csrf_token %}
+      <div class="form-group">
+        <label>{{fin_type}} Name:</label>
+        {{form.name}}
+      </div>
+      <div class="form-group">
+        <label>{{fin_type}} Category:</label>
+        {{form.categories}}
+      </div>
+      <div class="form-group">
+        <label>{{fin_type}} Amount:</label>
+        {{form.amount}}
+      </div>
+      <div class="form-group">
+        <label>Date:</label>
+        {{form.date_created}}
+      </div>
+      <button type="submit" class="btn btn-primary">Edit</button>
+    </form>
+  
+  <!-- Bootstrap JS (optional, for Bootstrap components) -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+{% endblock content %}
